@@ -10,6 +10,10 @@ public class ManagerCentralizer {
 
     //ManagersReferences
     public SceneController SceneControllerInstance;
+    public TileMapController TileMapControllerInstance;
+    public PlayerController PlayerControllerInstance;
+    public GamePlayContoller GamePlayContollerInstance;
+    public GameStateMachineManager GameStateMachineManagerInstance;
 
     
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,19 @@ public class GamePlayContoller : MonoBehaviour
 
     public int CurrentLevel;    
     public PlayerController PlayerControllerRef;
+
+    public void ProccessClick(Vector2 mousePosition)
+    {
+        if(ManagerCentralizer.Instance.GameStateMachineManagerInstance.GetGameStateType() == GAME_STATE_MACHINE.IDLSTATE)
+        {
+            MovePlayer(mousePosition);
+        }
+        else
+        {
+            Debug.Log("Cant Move Player");
+        }
+    }
+
     void Start()
     {
         
@@ -17,5 +31,15 @@ public class GamePlayContoller : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    public bool CanMove()
+    {
+        return false;
+    }
+
+
+    public void MovePlayer(Vector3 mousePosition) {
     }
 }

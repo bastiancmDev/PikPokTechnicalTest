@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class FigthModalityTemplate 
+public class PlayerStats 
 {
-    
+    private int _damage;
+    private int _life;
 
+    
+    
 }

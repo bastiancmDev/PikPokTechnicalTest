@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateMachineManager : MonoBehaviour
+public class PlayerNPC : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    BaseGameStateMachine _currentState;
-
     void Start()
     {
         
@@ -17,10 +14,5 @@ public class GameStateMachineManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public GAME_STATE_MACHINE GetGameStateType()
-    {
-        return _currentState.GetStateType();
     }
 }
