@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlayContoller : MonoBehaviour
+public class GameStateMachineManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public int CurrentLevel;    
-    public PlayerController PlayerControllerRef;
+    BaseGameStateMachine _currentState;
     void Start()
     {
         
