@@ -21,4 +21,20 @@ public class TileMapController : MonoBehaviour
             return false;
         }
     }
+
+    public Vector3 GetPostionToMove(Vector3 postion)
+    {
+        Vector2 mousePositiion = Camera.main.ScreenToWorldPoint(postion);
+        mousePositiion = Camera.main.ScreenToWorldPoint(mousePositiion);
+        Vector3Int gridPosition = Map.WorldToCell(mousePositiion);
+        if (Map.HasTile(gridPosition))
+        {
+            return mousePositiion;
+        }
+        else
+        {
+            Debug.Log("cant move");
+            return Vector3.zero;
+        }
+    }
 }

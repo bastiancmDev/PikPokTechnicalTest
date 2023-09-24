@@ -14,7 +14,10 @@ public class GamePlayContoller : MonoBehaviour
     {
         if(ManagerCentralizer.Instance.GameStateMachineManagerInstance.GetGameStateType() == GAME_STATE_MACHINE.IDLSTATE)
         {
-            MovePlayer(mousePosition);
+           if (ManagerCentralizer.Instance.TileMapControllerInstance.ValidatorMove(mousePosition))
+            {
+                MovePlayer(ManagerCentralizer.Instance.TileMapControllerInstance.GetPostionToMove(mousePosition));
+            }
         }
         else
         {
@@ -41,5 +44,7 @@ public class GamePlayContoller : MonoBehaviour
 
 
     public void MovePlayer(Vector3 mousePosition) {
+        //SET STATE MACHINE TO MOVE PLAYER []
+        PlayerControllerRef.MoveTo(mousePosition);
     }
 }
