@@ -7,9 +7,7 @@ public abstract class BaseGameStateMachine {
     public abstract void UpdateState(GameStateMachineManager managerState);
     public abstract void OnExitState(GameStateMachineManager managerState);
 
-    public GAME_STATE_MACHINE GetStateType()
-    {
-        return _gameState;
-    }
+    public abstract GAME_STATE_MACHINE GetStateType();
+    
 
 }

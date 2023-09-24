@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayingStateMachine : BaseGameStateMachine
 {
+    public override GAME_STATE_MACHINE GetStateType()
+    {
+        return GAME_STATE_MACHINE.PLAYINGSTATE;
+    }
+
     public override void OnEnterState(GameStateMachineManager managerState)
     {
         throw new System.NotImplementedException();

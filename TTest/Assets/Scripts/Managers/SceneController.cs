@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,20 +10,27 @@ public class SceneController : MonoBehaviour
 
     private string _currenScene;
     public string CurrenScene { get { return _currenScene; } }
-    public void LoadNewScene(string sceneName)
+    public void LoadNewScene(string sceneName, Action<Scene, LoadSceneMode> callback = null)
     {
         _currenScene = sceneName;
         SceneManager.LoadScene(sceneName);
+        SceneManager.sceneLoaded += LoadedScene;
     }
 
-    void Start()
+    private void LoadedScene(Scene arg0, LoadSceneMode arg1)
     {
-        
+       switch (arg0.name)
+        {
+            
+            case "MainMenu":
+                break;
+            default:
+                ManagerCentralizer.Instance.InitGameplayController();
+                ManagerCentralizer.Instance.InitTileMapController();
+                break;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
+
 }

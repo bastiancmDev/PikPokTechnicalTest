@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class InputPlayerController : MonoBehaviour
 {
@@ -37,6 +39,19 @@ public class InputPlayerController : MonoBehaviour
     private void ProccesMouseClick(InputAction.CallbackContext context)
     {
         Vector2 mousePosition = _inputActions.PlayerMove.MousePosition.ReadValue<Vector2>();
-        ManagerCentralizer.Instance.GamePlayContollerInstance.ProccessClick(mousePosition);
+        ManagerCentralizer.Instance.GamePlayContollerInstance.ProccessClick( mousePosition);
+    }
+
+
+    private void Update()
+    {
+
+        Vector2 mousePosition = _inputActions.PlayerMove.MousePosition.ReadValue<Vector2>();
+        
+        var ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x,mousePosition.y,Camera.main.nearClipPlane));
+        if (Physics.Raycast(ray, out var hitInfo))
+        {
+            Debug.DrawRay(ray.origin, hitInfo.point);
+        }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3685445700016652418}
   - component: {fileID: 1840334135414574691}
   - component: {fileID: 5800405411649722528}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GrassCeil
   m_TagString: Untagged
   m_Icon: {fileID: 0}

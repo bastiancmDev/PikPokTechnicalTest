@@ -41,5 +41,29 @@ public class ManagerCentralizer {
         //throw new NotImplementedException();
     }
 
+    public void InitGameplayController()
+    {
+        if(GamePlayContollerInstance == null)
+        {
+            var gamePlayerControllerObj = new GameObject();
+            gamePlayerControllerObj.name = "GamePlayController";
+            gamePlayerControllerObj.AddComponent<GamePlayContoller>();
+            GamePlayContollerInstance = gamePlayerControllerObj.GetComponent<GamePlayContoller>();  
+        }
+       
+    }
+
+    public void InitTileMapController()
+    {
+        if (TileMapControllerInstance == null)
+        {
+            var tileMapController = new GameObject();
+            tileMapController.name = "TileMapController";
+            tileMapController.AddComponent<TileMapController>();
+            TileMapControllerInstance = tileMapController.GetComponent<TileMapController>();
+        }
+
+    }
+
     #endregion
 }

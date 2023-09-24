@@ -25,9 +25,21 @@ public class GamePlayContoller : MonoBehaviour
         }
     }
 
+
+    public void InitGame()
+    {
+        var StateMachineGameObj = new GameObject();
+        StateMachineGameObj.name = "StateMachine";
+        StateMachineGameObj.AddComponent<GameStateMachineManager>();
+        ManagerCentralizer.Instance.GameStateMachineManagerInstance = StateMachineGameObj.GetComponent<GameStateMachineManager>();
+        PlayerControllerRef = FindAnyObjectByType<PlayerController>();
+    }
+
     void Start()
     {
-        
+        InitGame();
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

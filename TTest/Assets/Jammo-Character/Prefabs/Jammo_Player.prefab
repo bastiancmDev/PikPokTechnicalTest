@@ -1917,6 +1917,7 @@ GameObject:
   - component: {fileID: 4757836856755875627}
   - component: {fileID: 4757836856755875625}
   - component: {fileID: 1055198330461644710}
+  - component: {fileID: 2548362041614228664}
   m_Layer: 0
   m_Name: Jammo_Player
   m_TagString: Untagged
@@ -2045,6 +2046,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01bb6e19ca98489459c978e0ddc024e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2548362041614228664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3541754002163558908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8c97c04b285c04f80f0afbfd77954c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3921334144448749991

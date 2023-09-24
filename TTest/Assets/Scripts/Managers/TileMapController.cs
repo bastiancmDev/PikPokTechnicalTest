@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,31 +12,59 @@ public class TileMapController : MonoBehaviour
 
     public bool ValidatorMove(Vector3 postion)
     {
-        Vector2  mousePositiion = Camera.main.ScreenToWorldPoint(postion);
-        mousePositiion = Camera.main.ScreenToWorldPoint(mousePositiion);
-        Vector3Int gridPosition = Map.WorldToCell(mousePositiion);
-        if(Map.HasTile(gridPosition)) { 
-            return true;
-        }
-        else
+        return true;
+        var ray = Camera.main.ScreenPointToRay(new Vector3(postion.x, postion.y, Camera.main.nearClipPlane)); ;
+        if (Physics.Raycast(ray, out var hitInfo))
         {
+            Debug.DrawRay(ray.origin, hitInfo.point);   
+            var mousePositiion = hitInfo.point;
+            Vector3Int gridPosition = Map.WorldToCell(mousePositiion);            
+            if (Map.HasTile(gridPosition))
+            {
+                
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else{
             return false;
         }
+        
     }
 
     public Vector3 GetPostionToMove(Vector3 postion)
     {
-        Vector2 mousePositiion = Camera.main.ScreenToWorldPoint(postion);
-        mousePositiion = Camera.main.ScreenToWorldPoint(mousePositiion);
-        Vector3Int gridPosition = Map.WorldToCell(mousePositiion);
-        if (Map.HasTile(gridPosition))
+        var ray = Camera.main.ScreenPointToRay(new Vector3(postion.x, postion.y, Camera.main.nearClipPlane)); ;
+        if (Physics.Raycast(ray, out var hitInfo))
         {
-            return mousePositiion;
+            if(hitInfo.collider.tag == "CeilToMove")
+            {
+                Debug.DrawRay(ray.origin, hitInfo.point);
+                var mousePositiion = hitInfo.point;
+                return mousePositiion;
+            }
+            else
+            {
+                return Vector3.zero;
+            }
+            
         }
         else
         {
-            Debug.Log("cant move");
             return Vector3.zero;
         }
+    }
+
+    private void Start()
+    {
+        InitTileMap();
+    }
+
+    private void InitTileMap()
+    {
+        Map = GameObject.Find("GroundTileMap").GetComponent<Tilemap>(); 
     }
 }
