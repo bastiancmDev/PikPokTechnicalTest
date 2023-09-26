@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MovePlayer(Vector3 pos)
     {
-
+        transform.LookAt(pos);
         while (Vector3.Distance(transform.position, pos) > 0.1f)
         {
             float step = 0.1f;

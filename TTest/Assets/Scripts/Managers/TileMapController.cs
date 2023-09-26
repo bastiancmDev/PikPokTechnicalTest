@@ -11,17 +11,15 @@ public class TileMapController : MonoBehaviour
     public Tilemap Map;
 
     public bool ValidatorMove(Vector3 postion)
-    {
-        return true;
+    {        
         var ray = Camera.main.ScreenPointToRay(new Vector3(postion.x, postion.y, Camera.main.nearClipPlane)); ;
         if (Physics.Raycast(ray, out var hitInfo))
         {
-            Debug.DrawRay(ray.origin, hitInfo.point);   
-            var mousePositiion = hitInfo.point;
-            Vector3Int gridPosition = Map.WorldToCell(mousePositiion);            
-            if (Map.HasTile(gridPosition))
+
+            if (hitInfo.collider.tag == "CeilToMove")
             {
-                
+                Debug.DrawRay(ray.origin, hitInfo.point);
+                var mousePositiion = hitInfo.point;
                 return true;
             }
             else

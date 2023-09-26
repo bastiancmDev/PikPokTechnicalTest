@@ -21,6 +21,6 @@ public class ShowingUIGameState : BaseGameStateMachine
 
     public override void UpdateState(GameStateMachineManager managerState)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameStateMachineManager : MonoBehaviour
@@ -17,20 +18,14 @@ public class GameStateMachineManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        _currentState.UpdateState(this);
     }
 
     public void SetGameState(BaseGameStateMachine newState)
     {
-        _currentState = newState;
-        switch (_currentState) {
-            case IdlStateMachine:
-                break;
-            case MovingStateMachine:
-                break;
-             case ShowingUIGameState:
-                break;
-        }
+        _currentState.OnExitState(this);
+        _currentState= newState;
+        _currentState.UpdateState(this);        
     }
 
 
@@ -38,4 +33,5 @@ public class GameStateMachineManager : MonoBehaviour
     {
         return _currentState.GetStateType();
     }
+
 }
