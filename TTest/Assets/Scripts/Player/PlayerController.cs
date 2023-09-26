@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviour
             float step = 0.1f;
             transform.position = Vector3.MoveTowards(transform.position, pos, step);
             yield return new WaitForSeconds(0.01f);
-        }       
+        }
+        ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.IDLSTATE);
             
     }
 }

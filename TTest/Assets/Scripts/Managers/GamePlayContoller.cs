@@ -9,6 +9,9 @@ public class GamePlayContoller : MonoBehaviour
 
     public int CurrentLevel;    
     public PlayerController PlayerControllerRef;
+    public EnemyTemplate CurrentEnemy;
+
+    public bool IsTurnOfPlayer;
 
     public void ProccessClick(Vector2 mousePosition)
     {
@@ -58,5 +61,31 @@ public class GamePlayContoller : MonoBehaviour
     public void MovePlayer(Vector3 mousePosition) {
         //SET STATE MACHINE TO MOVE PLAYER []
         PlayerControllerRef.MoveTo(mousePosition);
+    }
+
+    public void ValidateIfEnemiesClose()
+    {
+        var enemies = FindObjectsOfType<MainEnemy>();
+        foreach(var enemy in enemies)
+        {
+            if(Vector3.Distance(enemy.transform.position, PlayerControllerRef.transform.position) < 1)
+            {
+                CurrentEnemy = enemy;
+                SetPlayingMode();
+                return;
+            }
+        }        
+    }
+
+    public void SetPlayingMode()
+    {
+        ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.PLAYINGSTATE);
+    }
+
+    public void ValidatePlayingMode()
+    {
+        IsTurnOfPlayer = true;
+        //PrepareUiToPlayerTurn
+
     }
 }

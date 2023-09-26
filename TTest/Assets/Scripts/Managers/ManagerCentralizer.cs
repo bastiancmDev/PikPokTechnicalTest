@@ -14,6 +14,7 @@ public class ManagerCentralizer {
     public PlayerController PlayerControllerInstance;
     public GamePlayContoller GamePlayContollerInstance;
     public GameStateMachineManager GameStateMachineManagerInstance;
+    public UiMenuController UiMenuControllerInstance;
 
     
 

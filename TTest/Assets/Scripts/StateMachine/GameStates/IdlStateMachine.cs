@@ -12,12 +12,12 @@ public class IdlStateMachine : BaseGameStateMachine
 
     public override void OnEnterState(GameStateMachineManager managerState)
     {
-        throw new System.NotImplementedException();
+        ManagerCentralizer.Instance.GamePlayContollerInstance.ValidateIfEnemiesClose();
     }
 
     public override void OnExitState(GameStateMachineManager managerState)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void UpdateState(GameStateMachineManager managerState)

@@ -9,10 +9,20 @@ public class GameStateMachineManager : MonoBehaviour
 
     BaseGameStateMachine _currentState;
 
+
+    private IdlStateMachine _idlStateMachine;
+    private MovingStateMachine _movingStateMachine;
+    private ShowingUIGameState _showinUiStateMachine;
+    private PlayingStateMachine _playingStateMachine;
+
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        _currentState = new IdlStateMachine();
+        _idlStateMachine = new IdlStateMachine();
+        _movingStateMachine = new MovingStateMachine();
+        _showinUiStateMachine = new ShowingUIGameState();
+        _playingStateMachine = new PlayingStateMachine();
+        _currentState = _idlStateMachine;
     }
 
     // Update is called once per frame
@@ -25,7 +35,27 @@ public class GameStateMachineManager : MonoBehaviour
     {
         _currentState.OnExitState(this);
         _currentState= newState;
-        _currentState.UpdateState(this);        
+        _currentState.OnEnterState(this);        
+    }
+
+
+    public void EnterToNewState(GAME_STATE_MACHINE newState)
+    {
+        switch (newState)
+        {
+            case GAME_STATE_MACHINE.IDLSTATE:
+                SetGameState(_idlStateMachine);
+                break;
+            case GAME_STATE_MACHINE.MOVINGPLAYER:
+                SetGameState(_movingStateMachine);
+                break;
+            case GAME_STATE_MACHINE.SHOWINIU:
+                SetGameState(_showinUiStateMachine);
+                break;
+            case GAME_STATE_MACHINE.PLAYINGSTATE:
+                SetGameState(_playingStateMachine);
+                break;
+        }
     }
 
 
