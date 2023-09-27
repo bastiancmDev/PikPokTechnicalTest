@@ -7,14 +7,26 @@ public class UiMenuController : MonoBehaviour
 {
     // Start is called before the first frame update
      public Action<bool> ShowFightUIEvent { get;  set; }
-    public void ShowFigthUi()
+     public Action<bool> ShowInventoryUIEvent { get;  set; }
+    public void ShowFigthUI()
     {
-        ShowFightUIEvent.Invoke(true);
+        ShowFightUIEvent?.Invoke(true);
     }
 
-    public void HideFigthUi()
+    public void HideFigthUI()
     {
-        ShowFightUIEvent.Invoke(false);
+        ShowFightUIEvent?.Invoke(false);
+    }
+
+
+    public void ShowInventoryUI()
+    {
+        ShowInventoryUIEvent?.Invoke(true);
+    }
+
+    public void HideInventoryUI()
+    {
+        ShowInventoryUIEvent?.Invoke(false);
     }
 
     UiMenuController()

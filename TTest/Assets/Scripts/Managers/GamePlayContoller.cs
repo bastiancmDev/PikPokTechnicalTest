@@ -83,7 +83,7 @@ public class GamePlayContoller : MonoBehaviour
         ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.PLAYINGSTATE);
         CurrentFigthModality = new FigthModality();
         CurrentFigthModality.InitFigthModality(CurrentEnemy);
-        ManagerCentralizer.Instance.UiMenuControllerInstance.ShowFigthUi();        
+        ManagerCentralizer.Instance.UiMenuControllerInstance.ShowFigthUI();        
     }
 
 
