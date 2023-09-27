@@ -10,11 +10,10 @@ public class UiMenuController : MonoBehaviour
     public Action<bool> ShowFightUIEvent { get; set; }
     public Action<bool> ShowInventoryUIEvent { get; set; }
 
-    public void ShowFigthUi()
-    {
 
-    }
+    public GameObject FigthUi;
 
+   
     public void ShowFigthUI()
     {
         ShowFightUIEvent?.Invoke(true);
