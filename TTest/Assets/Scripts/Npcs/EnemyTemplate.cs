@@ -48,4 +48,9 @@ public abstract class EnemyTemplate : MonoBehaviour
     {
         throw new System.NotImplementedException();
     }
+
+    public virtual int GetEnemyDamage()
+    {
+        return this.Damage;
+    }
 }

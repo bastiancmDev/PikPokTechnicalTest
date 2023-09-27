@@ -54,7 +54,8 @@ public abstract class FigthModalityTemplate
 
     private void ProccesEnemyAttack()
     {
-        //throw new NotImplementedException();
+        int DamageOfEnemy = CurrentEnemy.GetEnemyDamage();
+        ManagerCentralizer.Instance.GamePlayContollerInstance.PlayerControllerRef.GetPlayerStats().ReviceDamage(DamageOfEnemy);
     }
 
     private void ProccesEnemyDefence()
@@ -99,7 +100,7 @@ public abstract class FigthModalityTemplate
         }
         else
         {
-            ActionFromEnemy(ACTION_PLAYER_TYPE.ATACK);
+            ActionFromEnemy(ACTION_PLAYER_TYPE.DEFENCE);
 
         }
 

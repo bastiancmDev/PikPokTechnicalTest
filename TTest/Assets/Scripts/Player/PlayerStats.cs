@@ -70,4 +70,10 @@ public class PlayerStats
     }
 
 
+    public void ReviceDamage(int damage)
+    {
+        _health -= damage;
+    }
+
+
 }
