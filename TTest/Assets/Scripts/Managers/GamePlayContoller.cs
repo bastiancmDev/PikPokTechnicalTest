@@ -1,3 +1,4 @@
+using Assets.Scripts.StateMachine.Modalitys;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ public class GamePlayContoller : MonoBehaviour
     public int CurrentLevel;    
     public PlayerController PlayerControllerRef;
     public EnemyTemplate CurrentEnemy;
+    public FigthModalityTemplate CurrentFigthModality;
 
     public bool IsTurnOfPlayer;
 
@@ -68,7 +70,7 @@ public class GamePlayContoller : MonoBehaviour
         var enemies = FindObjectsOfType<MainEnemy>();
         foreach(var enemy in enemies)
         {
-            if(Vector3.Distance(enemy.transform.position, PlayerControllerRef.transform.position) < 1)
+            if(Vector3.Distance(enemy.transform.position, PlayerControllerRef.transform.position) < 5)
             {
                 CurrentEnemy = enemy;
                 SetPlayingMode();
@@ -79,13 +81,13 @@ public class GamePlayContoller : MonoBehaviour
 
     public void SetPlayingMode()
     {
-        ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.PLAYINGSTATE);
+        CurrentFigthModality = new FigthModality();
+        CurrentFigthModality.InitFigthModality(CurrentEnemy);
+        ManagerCentralizer.Instance.UiMenuControllerInstance.ShowFigthUi();
     }
-
     public void ValidatePlayingMode()
     {
         IsTurnOfPlayer = true;
         //PrepareUiToPlayerTurn
-
     }
 }

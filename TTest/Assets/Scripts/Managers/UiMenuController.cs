@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,50 +7,29 @@ public class UiMenuController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject PrefabPlayingUi;
-    public GameObject PrefabPausedUi;
-    public GameObject ShopUi;
-    
+    public Action<bool> ShowFightUIEvent { get; set; }
+    public Action<bool> ShowInventoryUIEvent { get; set; }
 
-    public void InitMainViews()
+    public void ShowFigthUi()
     {
 
     }
 
-
-    public void ShowFigthMenu(bool show)
+    public void ShowFigthUI()
     {
-        if(show) {
-            PrefabPlayingUi.SetActive(true);
-        }
-        else
-        {
-            PrefabPlayingUi.SetActive(false);
-        }
+        ShowFightUIEvent?.Invoke(true);
     }
-
-    public void ShowPausedUi(bool show)
+    public void HideFigthUI()
     {
-        if (show)
-        {
-            PrefabPausedUi.SetActive(true);
-        }
-        else
-        {
-            PrefabPausedUi.SetActive(false);
-        }
+        ShowFightUIEvent?.Invoke(false);
+    }
+    public void ShowInventoryUI()
+    {
+        ShowInventoryUIEvent?.Invoke(true);
+    }
+    public void HideInventoryUI()
+    {
+        ShowInventoryUIEvent?.Invoke(false);
     }
 
-
-    public void ShowShopUi(bool show) 
-    {  
-        if (show) 
-        {
-            ShopUi.SetActive(true);
-        }
-        else
-        {
-            ShopUi.SetActive(false);
-        }
-    }
 }
