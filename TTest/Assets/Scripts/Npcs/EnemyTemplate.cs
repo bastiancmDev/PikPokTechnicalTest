@@ -1,14 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class EnemyTemplate : MonoBehaviour
 {
+    [SerializeField]
     protected string Name { get; set; }
+    [SerializeField]
     protected string Description { get; set; }
+    [SerializeField]
     protected string Type { get; set; }
+    [SerializeField]
     protected int Level { get; set; }
+    [SerializeField]
     protected int Damage { get; set; }
+    [SerializeField]
     protected int Life { get; set; }
 
     public virtual void Attack()
@@ -24,5 +32,25 @@ public abstract class EnemyTemplate : MonoBehaviour
     public virtual void InitTurn()
     {
         throw new System.NotImplementedException();
+    }
+
+    internal virtual void reciveDamage(int damage)
+    {
+        this.Life -= damage;
+    }
+
+
+    public void Start()
+    {
+        InitEnemy();
+    }
+
+    public void InitEnemy()
+    {
+        Name = "ENEMY BASE";
+        Description = "ENEMY BASE NO COMPLETED";
+        Level = 1;
+        Damage = 20;
+        Life = 100;
     }
 }

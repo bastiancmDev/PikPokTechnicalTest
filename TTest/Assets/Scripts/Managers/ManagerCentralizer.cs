@@ -39,7 +39,7 @@ public class ManagerCentralizer {
 
     public void Init()
     {
-        //throw new NotImplementedException();
+        InitUiMenuController();
     }
 
     public void InitGameplayController()
@@ -52,6 +52,18 @@ public class ManagerCentralizer {
             GamePlayContollerInstance = gamePlayerControllerObj.GetComponent<GamePlayContoller>();  
         }
        
+    }
+
+    public void InitUiMenuController()
+    {
+        if (UiMenuControllerInstance == null)
+        {
+            var UiMenuController = new GameObject();
+            UiMenuController.name = "UiMenuController";
+            UiMenuController.AddComponent<UiMenuController>();
+            UiMenuControllerInstance = UiMenuController.GetComponent<UiMenuController>();
+        }
+
     }
 
     public void InitTileMapController()
