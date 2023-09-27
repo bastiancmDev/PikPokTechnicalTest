@@ -64,5 +64,10 @@ public class PlayerStats
     {
     }
 
+    public void DefenceMovement()
+    {
+        _health +=  20;
+    }
+
 
 }

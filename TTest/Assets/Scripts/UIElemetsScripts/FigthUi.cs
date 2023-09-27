@@ -24,12 +24,12 @@ public class FigthUi : MonoBehaviour
 
     public void AtackEvent()
     {
-        ManagerCentralizer.Instance.GamePlayContollerInstance.CurrentFigthModality.ProccesAttack();
+        ManagerCentralizer.Instance.GamePlayContollerInstance.CurrentFigthModality.ActionFromPlayer(ACTION_PLAYER_TYPE.ATACK);
     }
 
     public void DefenceEvent()
     {
-        ManagerCentralizer.Instance.GamePlayContollerInstance.CurrentFigthModality.ProccesDefence();
+        ManagerCentralizer.Instance.GamePlayContollerInstance.CurrentFigthModality.ActionFromPlayer(ACTION_PLAYER_TYPE.DEFENCE);
     }
 
 

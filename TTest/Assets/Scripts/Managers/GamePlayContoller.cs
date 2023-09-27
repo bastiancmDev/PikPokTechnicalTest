@@ -91,4 +91,17 @@ public class GamePlayContoller : MonoBehaviour
         IsTurnOfPlayer = true;
         //PrepareUiToPlayerTurn
     }
+    
+
+    public void SwtichTurnFunctionDelay(Action callback)
+    {
+        StartCoroutine(SwitchTurnDelayCoroutine(callback));
+    }
+
+    IEnumerator SwitchTurnDelayCoroutine(Action callback)
+    {
+        yield return new WaitForSeconds(1);
+        callback?.Invoke();
+    }
+
 }

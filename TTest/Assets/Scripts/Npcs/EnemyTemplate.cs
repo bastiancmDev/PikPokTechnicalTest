@@ -36,7 +36,7 @@ public abstract class EnemyTemplate : MonoBehaviour
 
     public virtual void Attack()
     {
-        throw new System.NotImplementedException();
+        ManagerCentralizer.Instance.GamePlayContollerInstance.CurrentFigthModality.ActionFromEnemy(ACTION_PLAYER_TYPE.ATACK);
     }
 
     public virtual void Die()
