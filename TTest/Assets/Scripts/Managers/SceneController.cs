@@ -20,14 +20,13 @@ public class SceneController : MonoBehaviour
     private void LoadedScene(Scene arg0, LoadSceneMode arg1)
     {
        switch (arg0.name)
-        {            
+        {
+            
             case "MainMenu":
-                
                 break;
             default:
                 ManagerCentralizer.Instance.InitGameplayController();
                 ManagerCentralizer.Instance.InitTileMapController();
-                
                 break;
         }
     }

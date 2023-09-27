@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,25 +5,51 @@ using UnityEngine;
 public class UiMenuController : MonoBehaviour
 {
     // Start is called before the first frame update
-     public Action<bool> ShowFightUIEvent { get;  set; }
-    public void ShowFigthUi()
-    {
-        ShowFightUIEvent.Invoke(true);
-    }
 
-    public void HideFigthUi()
-    {
-        ShowFightUIEvent.Invoke(false);
-    }
+    public GameObject PrefabPlayingUi;
+    public GameObject PrefabPausedUi;
+    public GameObject ShopUi;
+    
 
-    UiMenuController()
+    public void InitMainViews()
     {
 
     }
 
 
-    private void Start()
+    public void ShowFigthMenu(bool show)
     {
-        DontDestroyOnLoad(gameObject);
+        if(show) {
+            PrefabPlayingUi.SetActive(true);
+        }
+        else
+        {
+            PrefabPlayingUi.SetActive(false);
+        }
+    }
+
+    public void ShowPausedUi(bool show)
+    {
+        if (show)
+        {
+            PrefabPausedUi.SetActive(true);
+        }
+        else
+        {
+            PrefabPausedUi.SetActive(false);
+        }
+    }
+
+
+    public void ShowShopUi(bool show) 
+    {  
+        if (show) 
+        {
+            ShopUi.SetActive(true);
+        }
+        else
+        {
+            ShopUi.SetActive(false);
+        }
     }
 }

@@ -7,8 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Coroutine _moveCurrentCoroutineReference;
-    private PlayerStats _playerStats;
-    private bool _canMove = false;
+    private bool canMove = false;
     public  void MoveTo(Vector3 targetPos)
     {
         if (_moveCurrentCoroutineReference != null)
@@ -23,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        _playerStats = new PlayerStats();
+        
     }
 
     // Update is called once per frame
@@ -43,11 +42,5 @@ public class PlayerController : MonoBehaviour
         }
         ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.IDLSTATE);
             
-    }
-
-
-    public PlayerStats GetPlayerStats()
-    {
-        return _playerStats;
     }
 }

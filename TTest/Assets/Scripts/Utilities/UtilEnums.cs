@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum ITEM_TYPE
 {
-    DEFENCE,
-    OFFENSIVE,
+    EQUIPABLE,
+    CONSUMIBLE,
 }
 
 
@@ -15,11 +15,4 @@ public enum GAME_STATE_MACHINE
     PLAYINGSTATE,
     SHOWINIU,
     IDLSTATE
-}
-
-
-public enum ACTION_PLAYER_TYPE
-{
-    ATACK,
-    DEFENCE    
 }

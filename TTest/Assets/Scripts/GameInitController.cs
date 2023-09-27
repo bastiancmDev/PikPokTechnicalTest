@@ -19,7 +19,7 @@ public class GameInitController : MonoBehaviour
     public void InitManagers()
     {
         ManagerCentralizer.Instance.Init();               
-        ManagerCentralizer.Instance.SceneControllerInstance = GameObject.FindAnyObjectByType<SceneController>();
+        ManagerCentralizer.Instance.SceneControllerInstance = GameObject.FindAnyObjectByType<SceneController>(); ;
         ManagerConfiguration.Instance.Init();        
         // When all Managers and load data are completed, call SceneManager to load main menu scene
         ManagerCentralizer.Instance.SceneControllerInstance.LoadNewScene("MainMenu");
