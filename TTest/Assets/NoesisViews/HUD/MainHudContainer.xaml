@@ -8,7 +8,6 @@
         <Viewbox>
             <Grid Height="1080" Width="1920">
                 <local:FigthActionsPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="FigthPanelActions" ></local:FigthActionsPanel>
-                <local:MainInventory VerticalAlignment="Center" HorizontalAlignment="Left" Height="600"></local:MainInventory>
             </Grid>
         </Viewbox>
     </Grid>
