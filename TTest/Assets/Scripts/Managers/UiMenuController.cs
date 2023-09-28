@@ -13,7 +13,7 @@ public class UiMenuController : MonoBehaviour
 
     public GameObject FigthUi;
 
-   
+
     public void ShowFigthUI()
     {
         ShowFightUIEvent?.Invoke(true);
@@ -29,6 +29,12 @@ public class UiMenuController : MonoBehaviour
     public void HideInventoryUI()
     {
         ShowInventoryUIEvent?.Invoke(false);
+    }
+
+
+    public void UpdatePlayerStats()
+    {
+
     }
 
 }
