@@ -75,7 +75,7 @@ public class PlayerStats
                 _health += Item.LifeExtra;
                 break;
             case ITEM_TYPE.OFFENSIVE:
-                _damage += Item.LifeExtra;
+                _damage += Item.DamageExtra;
                 break;
         }
         ManagerCentralizer.Instance.UiMenuControllerInstance.UpdateFigthStats();
