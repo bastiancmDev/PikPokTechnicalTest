@@ -112,6 +112,8 @@ public class GamePlayContoller : MonoBehaviour
         ValidaIfWonPlayer();
         CurrentEnemy = null;
         ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.IDLSTATE);
+        ManagerCentralizer.Instance.UiMenuControllerInstance.HideFigthUI();
+
     }
 
     public void OnFinalizeFigth()
