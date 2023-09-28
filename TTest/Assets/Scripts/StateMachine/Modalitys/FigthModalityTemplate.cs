@@ -62,12 +62,13 @@ public abstract class FigthModalityTemplate
 
     private void ProccesEnemyDefence()
     {
-        //throw new NotImplementedException();
+         CurrentEnemy.UpdateLifeByDefence();
+        
     }
 
     public virtual void ProccesAttack()
     {
-        var damage = ManagerCentralizer.Instance.GamePlayContollerInstance.PlayerControllerRef.GetPlayerStats().GetDamageInTurn();
+        var damage = ManagerCentralizer.Instance.GamePlayContollerInstance.PlayerControllerRef.GetPlayerStats().GetBaseDamage();
         AttackEnemy(damage);
     }
     public virtual void ProccesDefence()
@@ -93,20 +94,23 @@ public abstract class FigthModalityTemplate
 
     public void AttackFromEnemyCalculator()
     {
-        System.Random rnd = new System.Random();
-        int movement = rnd.Next(0, 2);
-
-        if( movement == 0)
+        if (CurrentEnemy != null &&  CurrentEnemy.StillAlive())
         {
-            ActionFromEnemy(ACTION_PLAYER_TYPE.ATACK);
-        }
-        else
-        {
-            ActionFromEnemy(ACTION_PLAYER_TYPE.DEFENCE);
+            System.Random rnd = new System.Random();
+            int movement = rnd.Next(0, 2);
 
-        }
-        IsTurnOfPlayer = true;
-        SwitchTurn();
+            if (movement == 0)
+            {
+                ActionFromEnemy(ACTION_PLAYER_TYPE.ATACK);
+            }
+            else
+            {
+                ActionFromEnemy(ACTION_PLAYER_TYPE.DEFENCE);
+
+            }
+            IsTurnOfPlayer = true;
+            SwitchTurn();
+        }       
     }
 
     public void SwitchTurn()
@@ -114,5 +118,12 @@ public abstract class FigthModalityTemplate
         ManagerCentralizer.Instance.UiMenuControllerInstance.UpdateFigthStats();
     }
 
+
+
+    public virtual void FinalizeFigthModality()
+    {
+        CurrentEnemy = null;
+        ManagerCentralizer.Instance.GamePlayContollerInstance.OnFinalizeFigth();
+    }
 
 }

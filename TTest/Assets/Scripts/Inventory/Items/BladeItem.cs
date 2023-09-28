@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface BaseItem
+public class BladeItem : MonoBehaviour ,BaseItem
 {
     public string Name { get; set; }
     public string Description { get; set; }
@@ -12,4 +12,13 @@ public interface BaseItem
     public int LifeExtra { get; set; }
 
 
+    private void Start()
+    {
+        Name = "Blade";
+        Description = "";
+        Type = ITEM_TYPE.OFFENSIVE;
+        Price = 0;
+        DamageExtra = 10;
+        LifeExtra = 0;
+    }
 }

@@ -39,7 +39,6 @@ public class UiMenuController : MonoBehaviour
         var playerStats = ManagerCentralizer.Instance.GamePlayContollerInstance.PlayerControllerRef.GetPlayerStats();
         PlayerStatsModel playerStatsModel = new PlayerStatsModel() { Damage = playerStats.GetBaseDamage(), Life = playerStats.GetBaseHealth() };
         UpdatePlayerStatsEvent?.Invoke(playerStatsModel);
-
         var enemyStats = ManagerCentralizer.Instance.GamePlayContollerInstance.CurrentEnemy.GetEnemyStats();
         UpdateEnemyStatsEvent?.Invoke(enemyStats);
     }

@@ -20,17 +20,27 @@ public abstract class EnemyTemplate : MonoBehaviour
     internal virtual void reciveDamage(int damage)
     {
         this.Life -= damage;
+        if(Life <= 0 )
+        {
+            Die();
+        }
     }
+
+    public bool StillAlive()
+    {
+        return !(this.Life <= 0);
+    }
+
     public void Start()
     {
         InitEnemy();
     }
-    public void InitEnemy()
+    public virtual void InitEnemy()
     {
         Name = "ENEMY BASE";
         Description = "ENEMY BASE NO COMPLETED";
         Level = 1;
-        Damage = 20;
+        Damage = 5;
         Life = 100;
     }
 
@@ -41,7 +51,7 @@ public abstract class EnemyTemplate : MonoBehaviour
 
     public virtual void Die()
     {
-        throw new System.NotImplementedException();
+        ManagerCentralizer.Instance.GamePlayContollerInstance.CurrentFigthModality.FinalizeFigthModality();
     }
 
     public virtual void InitTurn()
@@ -53,6 +63,12 @@ public abstract class EnemyTemplate : MonoBehaviour
     {
         return this.Damage;
     }
+    public virtual int UpdateLifeByDefence()
+    {
+        return Life += 5;
+    }
+
+
 
     public PlayerStatsModel GetEnemyStats()
     {

@@ -105,7 +105,18 @@ public class GamePlayContoller : MonoBehaviour
         yield return new WaitForSeconds(1);
         callback?.Invoke();
     }
+    IEnumerator FinaliceFigthCoroutine()
+    {
+        Destroy(CurrentEnemy.gameObject);
+        yield return new WaitForSeconds(0.5f);
+        CurrentEnemy = null;
+        ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.IDLSTATE);
+    }
 
+    public void OnFinalizeFigth()
+    {
+        StartCoroutine(FinaliceFigthCoroutine());
+    }
 
     
 
