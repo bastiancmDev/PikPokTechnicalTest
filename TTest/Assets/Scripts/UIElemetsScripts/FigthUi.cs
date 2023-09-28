@@ -6,13 +6,9 @@ public class FigthUi : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private void Awake()
-    {
-        ManagerCentralizer.Instance.UiMenuControllerInstance.ShowFightUIEvent += ShowThisPanel;
-    }
-
     void Start()
     {
+        ManagerCentralizer.Instance.UiMenuControllerInstance.ShowFightUIEvent += ShowThisPanel;
         ShowThisPanel(false);
     }
 

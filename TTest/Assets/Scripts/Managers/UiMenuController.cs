@@ -9,6 +9,8 @@ public class UiMenuController : MonoBehaviour
 
     public Action<bool> ShowFightUIEvent { get; set; }
     public Action<bool> ShowInventoryUIEvent { get; set; }
+
+    public Action<bool> ShowFinalPanelUIEvent { get; set; }
     public Action<PlayerStatsModel> UpdatePlayerStatsEvent { get; set; }
     public Action<PlayerStatsModel> UpdateEnemyStatsEvent { get; set; }
 
@@ -31,6 +33,10 @@ public class UiMenuController : MonoBehaviour
     public void HideInventoryUI()
     {
         ShowInventoryUIEvent?.Invoke(false);
+    }
+    public void ShowLoseOrWonPanel(bool wonPanel)
+    {
+        ShowFinalPanelUIEvent?.Invoke(wonPanel);
     }
 
 

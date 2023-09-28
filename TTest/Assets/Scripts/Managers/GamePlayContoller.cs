@@ -107,8 +107,9 @@ public class GamePlayContoller : MonoBehaviour
     }
     IEnumerator FinaliceFigthCoroutine()
     {
-        Destroy(CurrentEnemy.gameObject);
+        Destroy(CurrentEnemy.gameObject);        
         yield return new WaitForSeconds(0.5f);
+        ValidaIfWonPlayer();
         CurrentEnemy = null;
         ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.IDLSTATE);
     }
@@ -116,6 +117,18 @@ public class GamePlayContoller : MonoBehaviour
     public void OnFinalizeFigth()
     {
         StartCoroutine(FinaliceFigthCoroutine());
+    }
+
+
+    public void ValidaIfWonPlayer()
+    {
+        var enemies = FindObjectsOfType<MainEnemy>();
+        if( enemies == null || enemies.Length == 0)
+        {
+            ManagerCentralizer.Instance.UiMenuControllerInstance.ShowLoseOrWonPanel(true);
+        }
+        
+               
     }
 
     

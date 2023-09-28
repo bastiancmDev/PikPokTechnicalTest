@@ -58,6 +58,11 @@ public abstract class FigthModalityTemplate
     {
         int DamageOfEnemy = CurrentEnemy.GetEnemyDamage();
         ManagerCentralizer.Instance.GamePlayContollerInstance.PlayerControllerRef.GetPlayerStats().ReviceDamage(DamageOfEnemy);
+        var healtPlayer = ManagerCentralizer.Instance.GamePlayContollerInstance.PlayerControllerRef.GetPlayerStats().GetBaseHealth();
+        if (healtPlayer <= 0)
+        {
+            ManagerCentralizer.Instance.UiMenuControllerInstance.ShowLoseOrWonPanel(false);
+        }
     }
 
     private void ProccesEnemyDefence()
