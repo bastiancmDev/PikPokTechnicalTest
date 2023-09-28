@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MovePlayer(Vector3 pos)
     {
+
         transform.LookAt(pos);
         while (Vector3.Distance(transform.position, pos) > 0.1f)
         {
@@ -41,8 +42,7 @@ public class PlayerController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, pos, step);
             yield return new WaitForSeconds(0.01f);
         }
-        ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.IDLSTATE);
-            
+        ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.IDLSTATE);            
     }
 
 
