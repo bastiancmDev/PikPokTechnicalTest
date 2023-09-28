@@ -53,4 +53,9 @@ public abstract class EnemyTemplate : MonoBehaviour
     {
         return this.Damage;
     }
+
+    public PlayerStatsModel GetEnemyStats()
+    {
+        return new PlayerStatsModel() { Damage = Damage, Life = Life };
+    }
 }

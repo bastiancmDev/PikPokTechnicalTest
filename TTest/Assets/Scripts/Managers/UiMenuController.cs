@@ -9,6 +9,8 @@ public class UiMenuController : MonoBehaviour
 
     public Action<bool> ShowFightUIEvent { get; set; }
     public Action<bool> ShowInventoryUIEvent { get; set; }
+    public Action<PlayerStatsModel> UpdatePlayerStatsEvent { get; set; }
+    public Action<PlayerStatsModel> UpdateEnemyStatsEvent { get; set; }
 
 
     public GameObject FigthUi;
@@ -32,9 +34,14 @@ public class UiMenuController : MonoBehaviour
     }
 
 
-    public void UpdatePlayerStats()
+    public void UpdateFigthStats()
     {
+        var playerStats = ManagerCentralizer.Instance.GamePlayContollerInstance.PlayerControllerRef.GetPlayerStats();
+        PlayerStatsModel playerStatsModel = new PlayerStatsModel() { Damage = playerStats.GetBaseDamage(), Life = playerStats.GetBaseHealth() };
+        UpdatePlayerStatsEvent?.Invoke(playerStatsModel);
 
+        var enemyStats = ManagerCentralizer.Instance.GamePlayContollerInstance.CurrentEnemy.GetEnemyStats();
+        UpdateEnemyStatsEvent?.Invoke(enemyStats);
     }
 
 }

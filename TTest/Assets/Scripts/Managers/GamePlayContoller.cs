@@ -83,8 +83,10 @@ public class GamePlayContoller : MonoBehaviour
     {
         ManagerCentralizer.Instance.GameStateMachineManagerInstance.EnterToNewState(GAME_STATE_MACHINE.PLAYINGSTATE);
         CurrentFigthModality = new FigthModality();
+
         CurrentFigthModality.InitFigthModality(CurrentEnemy);
         ManagerCentralizer.Instance.UiMenuControllerInstance.ShowFigthUI();
+
     }
     public void ValidatePlayingMode()
     {
@@ -103,5 +105,10 @@ public class GamePlayContoller : MonoBehaviour
         yield return new WaitForSeconds(1);
         callback?.Invoke();
     }
+
+
+    
+
+   
 
 }

@@ -14,6 +14,7 @@ public abstract class FigthModalityTemplate
     public virtual void InitFigthModality(EnemyTemplate currentEnemy)
     {
         CurrentEnemy = currentEnemy;
+        SwitchTurn();
     }
     public virtual void ActionFromPlayer(ACTION_PLAYER_TYPE actionType)
     {
@@ -32,6 +33,7 @@ public abstract class FigthModalityTemplate
         }
         IsTurnOfPlayer = false;
         TurnOfEnemy();
+        SwitchTurn();
     }
 
     public virtual void ActionFromEnemy(ACTION_PLAYER_TYPE actionType)
@@ -49,7 +51,7 @@ public abstract class FigthModalityTemplate
                 ProccesEnemyAttack();
                 break;
         }
-        IsTurnOfPlayer = true;        
+              
     }
 
     private void ProccesEnemyAttack()
@@ -86,7 +88,7 @@ public abstract class FigthModalityTemplate
     public virtual void TurnOfEnemy()
     {
         ManagerCentralizer.Instance.GamePlayContollerInstance.SwtichTurnFunctionDelay(AttackFromEnemyCalculator);
-    }
+    }    
 
 
     public void AttackFromEnemyCalculator()
@@ -103,7 +105,13 @@ public abstract class FigthModalityTemplate
             ActionFromEnemy(ACTION_PLAYER_TYPE.DEFENCE);
 
         }
+        IsTurnOfPlayer = true;
+        SwitchTurn();
+    }
 
+    public void SwitchTurn()
+    {
+        ManagerCentralizer.Instance.UiMenuControllerInstance.UpdateFigthStats();
     }
 
 
